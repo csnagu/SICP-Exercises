@@ -192,11 +192,15 @@
 (define (even? n)
   (= (remainder n 2) 0))
 
+;; 問題1.16
 (define (fast-expt2 b n)
   (fe-iter b n 1))
 (define (fe-iter b n a)
-  (cond ((= n 0) 1)
-        ((even? n) (fe-iter ()
-                            ()
-                            (square b)))
-        ((else ()))))
+  (cond ((= n 0) a)
+        ((even? n) (fe-iter (square b)
+                            (/ n 2)
+                            a))
+        (else (fe-iter b
+                       (- n 1)
+                       (* b a)))))
+
