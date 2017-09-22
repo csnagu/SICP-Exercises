@@ -219,3 +219,32 @@
         ((even? b) (double (product a (halve b))))
         (else (+ a (product a (- b 1))))))
 
+
+;; 問題1.18
+;; ????
+
+
+;; 問題1.19
+;; ????
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+
+(define (fib-iter a b p q count)
+  (cond ((= count 0) b)
+        ((even? count)
+         (fib-iter a
+                   b
+                   ⟨??⟩      ; p'を計算
+                   ⟨??⟩      ; q'を計算
+                   (/ count 2)))
+        (else (fib-iter (+ (* b q) (* a q) (* a p))
+                        (+ (* b p) (* a q))
+                        p
+                        q
+                        (- count 1)))))
+
+
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
